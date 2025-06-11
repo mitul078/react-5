@@ -1,0 +1,71 @@
+{
+  "users": [
+    {
+      "id": "BUli1c_w7iOlmb0EB8jvm",
+      "name": "mitul",
+      "Password": "mitul123",
+      "isAdmin": false,
+      "isLogin": false,
+      "email": "helloworld@00212",
+      "mobile": "212",
+      "Cart": []
+    },
+    {
+      "id": "GO-tXat1S6muMCf_dfi4T",
+      "name": "admin",
+      "Password": "admin123",
+      "isAdmin": true,
+      "isLogin": false,
+      "email": "hello@123.com",
+      "mobile": "6969696969",
+      "Cart": []
+    },
+    {
+      "id": "4ZFFYKtR7F0nQ3do_HKC0",
+      "name": "mitul123",
+      "Password": "mitul123",
+      "isAdmin": false,
+      "isLogin": false,
+      "Cart": [],
+      "email": "mitul@123.com",
+      "mobile": "1234567890"
+    }
+  ],
+  "products": [
+    {
+      "id": "_unaPiPgCspLa8VnJgXH2",
+      "productName": "Wireless Bluetooth Headphones",
+      "productDescription": "Experience crystal-clear sound with these premium wireless headphones. Featuring 40mm drivers, 20-hour battery life, and comfortable over-ear design. Perfect for music lovers and frequent travelers with active noise cancellation technology.",
+      "productPrice": "99",
+      "productImageURL": [
+        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+        "https://images.unsplash.com/photo-1590658268037-6bf12165a8df",
+        "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb",
+        "https://images.unsplash.com/photo-1545127398-5aae47194b22"
+      ]
+    },
+    {
+      "id": "qiduuJxEDU-cXDgwr9_0r",
+      "productName": "Stainless Steel Water Bottle",
+      "productDescription": "Keep your drinks cold for 24 hours or hot for 12 hours with this durable stainless steel bottle. Leak-proof design with carrying loop. Eco-friendly alternative to plastic bottles with 750ml capacity.",
+      "productPrice": "99",
+      "productImageURL": [
+        "https://images.unsplash.com/photo-1602143407151-7111542de6e8",
+        "https://images.unsplash.com/photo-1589365278144-c9e705f843ba",
+        "https://images.unsplash.com/photo-1603569283847-aa295f0d016a"
+      ]
+    },
+    {
+      "id": "X94cSJLJQZWyaD2zcTwM7",
+      "productName": "Organic Cotton T-Shirt",
+      "productDescription": "Soft 100% organic cotton t-shirt with crew neck design. Pre-shrunk fabric with reinforced stitching. Available in multiple colors with unisex sizing from XS to XXL. Machine washable.",
+      "productPrice": "99",
+      "productImageURL": [
+        "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
+        "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9",
+        "https://images.unsplash.com/photo-1576566588028-4147f3842f27",
+        "https://images.unsplash.com/photo-1527719327859-c6ce80353573"
+      ]
+    }
+  ]
+}
