@@ -18,7 +18,31 @@
       "isLogin": false,
       "email": "hello@123.com",
       "mobile": "6969696969",
-      "Cart": []
+      "Cart": [
+        {
+          "id": "_unaPiPgCspLa8VnJgXH2",
+          "productName": "Wireless Bluetooth Headphones",
+          "productDescription": "Experience crystal-clear sound with these premium wireless headphones. Featuring 40mm drivers, 20-hour battery life, and comfortable over-ear design. Perfect for music lovers and frequent travelers with active noise cancellation technology.",
+          "productPrice": "99",
+          "productImageURL": [
+            "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+            "https://images.unsplash.com/photo-1590658268037-6bf12165a8df",
+            "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb",
+            "https://images.unsplash.com/photo-1545127398-5aae47194b22"
+          ]
+        },
+        {
+          "id": "qiduuJxEDU-cXDgwr9_0r",
+          "productName": "Stainless Steel Water Bottle",
+          "productDescription": "Keep your drinks cold for 24 hours or hot for 12 hours with this durable stainless steel bottle. Leak-proof design with carrying loop. Eco-friendly alternative to plastic bottles with 750ml capacity.",
+          "productPrice": "99",
+          "productImageURL": [
+            "https://images.unsplash.com/photo-1602143407151-7111542de6e8",
+            "https://images.unsplash.com/photo-1589365278144-c9e705f843ba",
+            "https://images.unsplash.com/photo-1603569283847-aa295f0d016a"
+          ]
+        }
+      ]
     },
     {
       "id": "4ZFFYKtR7F0nQ3do_HKC0",
@@ -29,6 +53,14 @@
       "Cart": [],
       "email": "mitul@123.com",
       "mobile": "1234567890"
+    },
+    {
+      "id": "8pCqvGAksRYrpKgoKfvc5",
+      "name": "dummy",
+      "Password": "dummy123",
+      "isAdmin": false,
+      "isLogin": false,
+      "Cart": []
     }
   ],
   "products": [

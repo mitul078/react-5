@@ -1,7 +1,7 @@
 
 import axios from "../api/axiosConfig";
 import { toast } from "react-toastify";
-import { setLogin } from "./userSlice";
+import {  setLogin } from "./userSlice";
 
 export const loginUser = (user, navigate) => async (dispatch) => {
     try {
@@ -23,6 +23,7 @@ export const loginUser = (user, navigate) => async (dispatch) => {
         console.log(e)
     }
 }
+
 
 
 const addUserData = (user) => async () => {

@@ -2,19 +2,26 @@
 import '../styles/cart.css'
 import { useEffect, useState } from 'react'
 import axios from '../api/axiosConfig'
+import { useNavigate } from 'react-router-dom'
+
 
 const Cart = () => {
   const [cart, setcart] = useState([])
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"))
-    if (user.Cart) {
-      setcart(user.Cart)
-    }
-    else {
-      return <p>No Product Found</p>
-    }
+  const user = JSON.parse(localStorage.getItem("user"))
 
+
+  useEffect(() => {
+    const cartWithQuantity = user.Cart.map(product => ({
+      ...product,
+      quantity: product.quantity || 1
+    }));
+    setcart(cartWithQuantity);
   }, [])
+
+  const navigate = useNavigate();
+  const navigateHandler = (id) => {
+    navigate(`/Checkout/${id}`)
+  }
 
   const removeCartItem = async (id) => {
     const newCart = cart.filter((product) => product.id !== id)
@@ -25,8 +32,11 @@ const Cart = () => {
     await axios.patch(`/users/${user.id}`, {
       Cart: newCart
     })
-
   }
+
+
+
+
   return (
     <div className="cartPage">
       {cart.length == 0 ? (<p className='p'>Cart is Empty.....</p>) : (
@@ -38,7 +48,7 @@ const Cart = () => {
             <div className="data">
               <h1>{product.productName}</h1>
               <small>{product.productDescription}</small>
-              <button className='bg-blue-600'>Checkout @{product.productPrice}</button>
+              <button onClick={() => navigateHandler(product.id)} className='bg-blue-600 '>Checkout @{product.productPrice}</button>
               <button onClick={() => removeCartItem(product.id)}>Remove</button>
             </div>
           </div>

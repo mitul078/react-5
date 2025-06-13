@@ -15,6 +15,7 @@ const Register = () => {
     user.id = nanoid();
     user.isAdmin = false;
     user.isLogin = false;
+    user.Cart = [];
     dispatch(addUserData(user))
     reset();
     navigate("/login")

@@ -2,15 +2,15 @@
 import { NavLink } from 'react-router-dom'
 import '../styles/navbar/style.css'
 import { useState } from 'react'
-import {  useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 
 const Nav = () => {
     const [showMenu, setshowMenu] = useState(false);
     const isLogin = useSelector((state) => state.users.isLogin);
     const isAdmin = useSelector((state) => state.users.isAdmin);
-    
-    const handler = () => { 
+
+    const handler = () => {
         setshowMenu(!showMenu)
     }
     const closeMenu = () => {
@@ -27,9 +27,12 @@ const Nav = () => {
                         <NavLink onClick={closeMenu} to="/product" style={({ isActive }) => ({
                             color: isActive ? "#56483b" : ""
                         })}>Products</NavLink>
-                        <NavLink onClick={closeMenu} to="/cart" style={({ isActive }) => ({
-                            color: isActive ? "#56483b" : ""
-                        })}>Cart</NavLink>
+                        {
+                            isLogin &&
+                            <NavLink onClick={closeMenu} to="/cart" style={({ isActive }) => ({
+                                color: isActive ? "#56483b" : ""
+                            })}>Cart</NavLink>
+                        }
 
                         {
                             !isLogin &&
@@ -44,7 +47,7 @@ const Nav = () => {
                             })}>Profile</NavLink>
                         }
                         {
-                            isAdmin && 
+                            isAdmin &&
                             <NavLink onClick={closeMenu} to="/CreateProduct" style={({ isActive }) => ({
                                 color: isActive ? "#56483b" : ""
                             })}>CreateProduct</NavLink>

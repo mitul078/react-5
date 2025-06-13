@@ -7,10 +7,11 @@ import { setLogout } from '../features/userSlice'
 import axios from '../api/axiosConfig'
 
 
+
 const Profile = () => {
   const navigate = useNavigate()
   const [username, setusername] = useState("")
-  
+
   const [data, setdata] = useState({
     email: "",
     mobile: ""
@@ -24,16 +25,17 @@ const Profile = () => {
         mobile: user?.mobile || ""
       })
     }
+    
   }, [])
-  
+
 
   const [showEdit, setshowEdit] = useState(false)
-  const dataHandler = async () =>{
+  const dataHandler = async () => {
     try {
-      const user  = JSON.parse(localStorage.getItem("user"));
-      const addData = {...user , email:data.email  , mobile: data.mobile};
-      localStorage.setItem("user" , JSON.stringify(addData))
-      await axios.patch(`/users/${user.id}`,{
+      const user = JSON.parse(localStorage.getItem("user"));
+      const addData = { ...user, email: data.email, mobile: data.mobile };
+      localStorage.setItem("user", JSON.stringify(addData))
+      await axios.patch(`/users/${user.id}`, {
         email: data.email,
         mobile: data.mobile
       })
@@ -53,6 +55,8 @@ const Profile = () => {
   const logOutHandler = () => {
     dispatch(setLogout())
     localStorage.removeItem("isLogin")
+    localStorage.removeItem("user")
+    localStorage.removeItem("isAdmin")
     navigate("/login")
   }
   return (
@@ -94,7 +98,7 @@ const Profile = () => {
             </div>
 
           </div>
-          <button onClick={showEdit  ? dataHandler: handler }>{showEdit ? "Save" : "Edit"}</button>
+          <button onClick={showEdit ? dataHandler : handler}>{showEdit ? "Save" : "Edit"}</button>
           <button onClick={logOutHandler}>Logout</button>
         </div>
       </div>

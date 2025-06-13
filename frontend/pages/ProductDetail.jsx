@@ -1,19 +1,25 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import axios from '../api/axiosConfig';
 import '../styles/productDetail.css'
 import { loadCart } from '../features/cartSlice';
+import { useNavigate } from 'react-router-dom';
 
 const ProductDetail = () => {
+    const navigate = useNavigate();
+    const navigateHandler = () => {
+        navigate("/login")
+    }
+    const CheckoutNavigate = () => {
+        navigate(`Checkout`)
+    }
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const [mainImage, setMainImage] = useState("");
     const [cartToggle, setcartToggle] = useState(false)
-    const user = useSelector((state) => state.users.users)
-    console.log(user)
-
+    const isLogin = localStorage.getItem("isLogin")
     useEffect(() => {
         const getData = async () => {
             try {
@@ -33,17 +39,27 @@ const ProductDetail = () => {
     const addToCart = async (product) => {
         const result = await dispatch(loadCart(product))
         setcartToggle(true)
-        const user = JSON.parse(localStorage.getItem("user"));
-        const updatedCart = [...(user.Cart || []), result.payload];
-        const updatedUser = {
-            ...user,
-            Cart: updatedCart
-        };
-        localStorage.setItem("user", JSON.stringify(updatedUser));
 
-        await axios.patch(`/users/${user.id}`, {
-            Cart: updatedCart
-        });
+        const user = JSON.parse(localStorage.getItem("user"));
+        const currentCart = Array.isArray(user.Cart) ? user.Cart : [];
+        const isHave = currentCart.some(item => item.id === product.id)
+
+        if (isHave) {
+            alert("already in Cart")
+            return
+        }
+        else {
+            const updatedCart = [...(currentCart || []), result.payload];
+            const updatedUser = {
+                ...user,
+                Cart: updatedCart
+            };
+            localStorage.setItem("user", JSON.stringify(updatedUser));
+
+            await axios.patch(`/users/${user.id}`, {
+                Cart: updatedCart
+            });
+        }
     }
 
     const handleImageClick = (url) => {
@@ -65,9 +81,18 @@ const ProductDetail = () => {
                     <p className='review'>Reviews</p>
                     <p className='description'>{product.productDescription}</p>
                     <div className="btn">
-                        <button className='bg-blue-600'>Buy Now</button>
-                        <button className='like'>Like</button>
-                        <button disabled={cartToggle} onClick={() => addToCart(product)} className='bg-blue-600'>{cartToggle ? "Added" : "Add to Cart "}</button>
+                        {isLogin ? (
+                            <button disabled={cartToggle} onClick={() => addToCart(product)} className='bg-blue-600'>{cartToggle ? "Added" : "Add to Cart "}</button>
+                        ) : (
+                            <button onClick={navigateHandler} className='bg-red-500'>Login</button>
+                        )}
+                        {
+                            isLogin && (
+                                <>
+                                    <button className='like'>Like</button>
+                                </>
+                            )
+                        }
                     </div>
                 </div>
                 <div className="right">
